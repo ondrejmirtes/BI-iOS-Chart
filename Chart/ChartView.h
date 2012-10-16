@@ -15,4 +15,7 @@
 
 @property (nonatomic, strong) NSTimer *timer;
 
+- (void)turnAnimateOff;
+- (void)turnAnimateOn;
+
 @end

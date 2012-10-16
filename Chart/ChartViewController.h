@@ -15,4 +15,6 @@
 @property (weak, nonatomic) IBOutlet ChartView *chartView;
 @property (weak, nonatomic) IBOutlet PanelView *panelView;
 
+- (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer;
+
 @end

@@ -14,7 +14,7 @@
  */
 @protocol PanelViewProtocol <NSObject>
 
-- (void)panelViewButtonTapped;
+- (void)switchTurned:(BOOL)on;
 - (void)panelViewSliderValueChangedTo:(CGFloat)newValue;
 
 @end
@@ -24,7 +24,13 @@
 @property (nonatomic, weak) id<PanelViewProtocol> delegate;
 
 @property (nonatomic, weak) UIButton *button;
+
+@property (nonatomic, weak) UILabel *sliderLabel;
 @property (nonatomic, weak) UISlider *slider;
+
+@property (nonatomic, weak) UILabel *switchLabel;
 @property (nonatomic, weak) UISwitch *aSwitch;
+
+- (void)stopAnimating;
 
 @end

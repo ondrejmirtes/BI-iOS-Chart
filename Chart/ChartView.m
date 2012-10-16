@@ -37,14 +37,26 @@
 
 - (void)setup
 {
-    _a = 0;
-    _b = 0;
-    
-    /*
-     kazdych 0.02 sekundy posli me (self) zpravu animate
-     */
-    _timer = [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(animate) userInfo:nil repeats:YES];
-    [_timer fire];
+    _a = 1;
+    _b = 2;
+	
+	UIColor *backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"chart.png"]];
+	self.backgroundColor = backgroundColor;
+	
+	[self turnAnimateOn];
+}
+
+- (void)turnAnimateOff
+{
+	[_timer invalidate];
+	_timer = nil;
+}
+
+- (void)turnAnimateOn
+{
+	[self turnAnimateOff];
+	_timer = [NSTimer scheduledTimerWithTimeInterval:0.008 target:self selector:@selector(animate) userInfo:nil repeats:YES];
+	[_timer fire];
 }
 
 - (void)animate
@@ -52,24 +64,24 @@
     static BOOL diretion = YES;
 
     /*
-     animujeme _b mezi <0, 1>
+     animujeme _a mezi <-1, 1>
      */
     if (diretion) {
-        _b += 0.01;
+        _a += 0.01;
     }
     else {
-        _b -= 0.01;
+        _a -= 0.01;
     }
     
     /*
      smer se prehodi pri prekroceni mezni hodnoty
      */
-    if (_b > 1.0) {
-        _b = 1.0;
+    if (_a > 1.0) {
+        _a = 1.0;
         diretion = NO;
     }
-    if (_b < 0.0) {
-        _b = 0.0;
+    if (_a < -1.0) {
+        _a = -1.0;
         diretion = YES;
     }
     
@@ -105,12 +117,22 @@
      
      misto StrokePath je mozne samozrejme FillPath (kresleni do uzavreneho polygonu)
      */
-    CGContextMoveToPoint(contextRef, 8, 8);
-    CGContextAddLineToPoint(contextRef, self.bounds.size.width-8, _b*(self.bounds.size.height - 16)+8);
+    CGContextMoveToPoint(contextRef, 0, [self getY:0]);
+	for (int x = 0; x <= self.bounds.size.width; x++) {
+		CGContextAddLineToPoint(contextRef, x, [self getY:x]);
+	}
     CGContextSetStrokeColorWithColor(contextRef, [UIColor whiteColor].CGColor);
     CGContextSetLineWidth(contextRef, 4);
     CGContextSetShadowWithColor(contextRef, CGSizeMake(0, 2), 1, [UIColor grayColor].CGColor);
     CGContextStrokePath(contextRef);
+}
+
+- (int) getY:(int)x
+{
+	// <-PI, PI>
+	double xx = (x / self.bounds.size.width * 2 * M_PI) - M_PI;
+	int half = self.bounds.size.height / 2;
+	return (_a * half * sin(_b * xx)) + half;
 }
 
 

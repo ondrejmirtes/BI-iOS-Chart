@@ -19,9 +19,9 @@
 		173D2617161C9B8700DFF369 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 173D2615161C9B8700DFF369 /* MainStoryboard.storyboard */; };
 		173D261A161C9B8700DFF369 /* ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 173D2619161C9B8700DFF369 /* ChartViewController.m */; };
 		173D2627161C9D5400DFF369 /* PanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 173D2626161C9D5400DFF369 /* PanelView.m */; };
-		173D2629161CA53800DFF369 /* itunesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 173D2628161CA53800DFF369 /* itunesIcon.png */; };
 		173D262C161CA99D00DFF369 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 173D262B161CA99D00DFF369 /* QuartzCore.framework */; };
 		173D262F161CA9E800DFF369 /* ChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 173D262E161CA9E800DFF369 /* ChartView.m */; };
+		798CEA99162DEE4E00440B5E /* chart.png in Resources */ = {isa = PBXBuildFile; fileRef = 798CEA98162DEE4E00440B5E /* chart.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,10 +43,10 @@
 		173D2619161C9B8700DFF369 /* ChartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChartViewController.m; sourceTree = "<group>"; };
 		173D2625161C9D5400DFF369 /* PanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanelView.h; sourceTree = "<group>"; };
 		173D2626161C9D5400DFF369 /* PanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanelView.m; sourceTree = "<group>"; };
-		173D2628161CA53800DFF369 /* itunesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itunesIcon.png; sourceTree = "<group>"; };
 		173D262B161CA99D00DFF369 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		173D262D161CA9E800DFF369 /* ChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartView.h; sourceTree = "<group>"; };
 		173D262E161CA9E800DFF369 /* ChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartView.m; sourceTree = "<group>"; };
+		798CEA98162DEE4E00440B5E /* chart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chart.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +95,6 @@
 		173D2603161C9B8700DFF369 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
-				173D262A161CA53C00DFF369 /* Images */,
 				173D2621161C9D1A00DFF369 /* Controller */,
 				173D2620161C9D1400DFF369 /* View */,
 				173D260C161C9B8700DFF369 /* AppDelegate.h */,
@@ -109,6 +108,7 @@
 		173D2604161C9B8700DFF369 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				798CEA98162DEE4E00440B5E /* chart.png */,
 				173D2605161C9B8700DFF369 /* Chart-Info.plist */,
 				173D2606161C9B8700DFF369 /* InfoPlist.strings */,
 				173D2609161C9B8700DFF369 /* main.m */,
@@ -138,14 +138,6 @@
 				173D2619161C9B8700DFF369 /* ChartViewController.m */,
 			);
 			name = Controller;
-			sourceTree = "<group>";
-		};
-		173D262A161CA53C00DFF369 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				173D2628161CA53800DFF369 /* itunesIcon.png */,
-			);
-			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,7 +196,7 @@
 				173D2612161C9B8700DFF369 /* Default@2x.png in Resources */,
 				173D2614161C9B8700DFF369 /* Default-568h@2x.png in Resources */,
 				173D2617161C9B8700DFF369 /* MainStoryboard.storyboard in Resources */,
-				173D2629161CA53800DFF369 /* itunesIcon.png in Resources */,
+				798CEA99162DEE4E00440B5E /* chart.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +327,7 @@
 				173D261F161C9B8700DFF369 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
