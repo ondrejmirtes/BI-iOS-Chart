@@ -13,9 +13,4 @@
 @property (nonatomic, assign) CGFloat a;
 @property (nonatomic, assign) CGFloat b;
 
-@property (nonatomic, strong) NSTimer *timer;
-
-- (void)turnAnimateOff;
-- (void)turnAnimateOn;
-
 @end

@@ -42,57 +42,7 @@
 	
 	UIColor *backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"chart.png"]];
 	self.backgroundColor = backgroundColor;
-	
-	[self turnAnimateOn];
 }
-
-- (void)turnAnimateOff
-{
-	[_timer invalidate];
-	_timer = nil;
-}
-
-- (void)turnAnimateOn
-{
-	[self turnAnimateOff];
-	_timer = [NSTimer scheduledTimerWithTimeInterval:0.008 target:self selector:@selector(animate) userInfo:nil repeats:YES];
-	[_timer fire];
-}
-
-- (void)animate
-{
-    static BOOL diretion = YES;
-
-    /*
-     animujeme _a mezi <-1, 1>
-     */
-    if (diretion) {
-        _a += 0.01;
-    }
-    else {
-        _a -= 0.01;
-    }
-    
-    /*
-     smer se prehodi pri prekroceni mezni hodnoty
-     */
-    if (_a > 1.0) {
-        _a = 1.0;
-        diretion = NO;
-    }
-    if (_a < -1.0) {
-        _a = -1.0;
-        diretion = YES;
-    }
-    
-    /*
-     rekneme systemu, ze tenhle view je potreba prekreslit
-     system zavola autmaticky drawRect: jakmile bude mit volne prostredky
-     NIKDY nevolat drawRect primo!
-     */
-    [self setNeedsDisplay];
-}
-
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect

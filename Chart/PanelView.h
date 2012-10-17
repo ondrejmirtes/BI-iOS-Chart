@@ -15,22 +15,34 @@
 @protocol PanelViewProtocol <NSObject>
 
 - (void)switchTurned:(BOOL)on;
-- (void)panelViewSliderValueChangedTo:(CGFloat)newValue;
+- (void)panelViewShrinkSliderValueChangedTo:(CGFloat)newValue;
+- (void)panelViewAmpSliderValueChangedTo:(CGFloat)newValue;
+- (void)animate:(double)a b:(double)b;
 
 @end
 
 @interface PanelView : UIView
 
+@property (nonatomic, assign) CGFloat a;
+@property (nonatomic, assign) CGFloat b;
+
+@property (nonatomic, strong) NSTimer *timer;
+
 @property (nonatomic, weak) id<PanelViewProtocol> delegate;
 
 @property (nonatomic, weak) UIButton *button;
 
-@property (nonatomic, weak) UILabel *sliderLabel;
-@property (nonatomic, weak) UISlider *slider;
+@property (nonatomic, weak) UILabel *ampSliderLabel;
+@property (nonatomic, weak) UISlider *ampSlider;
+
+@property (nonatomic, weak) UILabel *shrinkSliderLabel;
+@property (nonatomic, weak) UISlider *shrinkSlider;
 
 @property (nonatomic, weak) UILabel *switchLabel;
 @property (nonatomic, weak) UISwitch *aSwitch;
 
 - (void)stopAnimating;
+- (void)turnAnimateOn;
+- (void)turnAnimateOff;
 
 @end

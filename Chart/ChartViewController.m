@@ -58,19 +58,32 @@
     [_chartView setNeedsDisplay];
 }
 
-- (void)panelViewSliderValueChangedTo:(CGFloat)newValue
+- (void)panelViewShrinkSliderValueChangedTo:(CGFloat)newValue
 {
     _chartView.b = newValue;
+    [_chartView setNeedsDisplay];
+}
+
+- (void)panelViewAmpSliderValueChangedTo:(CGFloat)newValue
+{
+    _chartView.a = newValue;
     [_chartView setNeedsDisplay];
 }
 
 - (void)switchTurned:(BOOL)on
 {
 	if (on) {
-		[_chartView turnAnimateOn];
+		[_panelView turnAnimateOn];
 	} else {
-		[_chartView turnAnimateOff];
+		[_panelView turnAnimateOff];
 	}
+}
+
+- (void)animate:(double)a b:(double)b
+{
+	_chartView.a = a;
+	_chartView.b = b;
+	[_chartView setNeedsDisplay];
 }
 
 @end
