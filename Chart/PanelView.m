@@ -76,9 +76,17 @@
 	[aSwitch addTarget:self action:@selector(switchTurned:) forControlEvents:UIControlEventValueChanged];
 	aSwitch.on = YES;
 	[self turnAnimateOn];
-	[self switchTurned:aSwitch];
     [self addSubview:aSwitch];
     _aSwitch = aSwitch;
+}
+
+- (void)switchTurned:(UISwitch*)aSwitch
+{
+	if (aSwitch.on) {
+		[self turnAnimateOn];
+	} else {
+		[self turnAnimateOff];
+	}
 }
 
 - (void)layoutSubviews
@@ -95,17 +103,9 @@
     _aSwitch.frame = CGRectMake(8, 48, 79, 27);
 }
 
-- (void)switchTurned:(UISwitch*) aSwitch
-{
-	if ([_delegate respondsToSelector:@selector(switchTurned:)]) {
-        [_delegate switchTurned:aSwitch.on];
-    }
-}
-
 - (void)shrinkSliderValueChanged:(UISlider *)aSlider
 {
-	[_aSwitch setOn:NO animated:YES];
-	[self switchTurned:_aSwitch];
+	//[self turnAnimateOff];
 	_b = aSlider.value;
     if ([_delegate respondsToSelector:@selector(panelViewShrinkSliderValueChangedTo:)]) {
         [_delegate panelViewShrinkSliderValueChangedTo:aSlider.value];
@@ -114,29 +114,22 @@
 
 - (void)ampSliderValueChanged:(UISlider *)aSlider
 {
-	[_aSwitch setOn:NO animated:YES];
-	[self switchTurned:_aSwitch];
+	[self turnAnimateOff];
 	_a = aSlider.value;
     if ([_delegate respondsToSelector:@selector(panelViewAmpSliderValueChangedTo:)]) {
         [_delegate panelViewAmpSliderValueChangedTo:aSlider.value];
     }
 }
 
-- (void)stopAnimating
-{
-	[_aSwitch setOn:NO animated:YES];
-	[self switchTurned:_aSwitch];
-}
-
 - (void)turnAnimateOff
 {
+	[_aSwitch setOn:NO animated:YES];
 	[_timer invalidate];
 	_timer = nil;
 }
 
 - (void)turnAnimateOn
 {
-	[self turnAnimateOff];
 	_timer = [NSTimer scheduledTimerWithTimeInterval:0.008 target:self selector:@selector(animate) userInfo:nil repeats:YES];
 	[_timer fire];
 }

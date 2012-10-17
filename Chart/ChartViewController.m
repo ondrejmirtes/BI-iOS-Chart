@@ -38,7 +38,7 @@
                                          recognizer.view.center.y + translation.y);
     [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
 	
-	[_panelView stopAnimating];
+	[_panelView turnAnimateOff];
 	
 	if (recognizer.state == UIGestureRecognizerStateEnded) {
 		[UIView beginAnimations:@"button_in" context:nil];
@@ -53,11 +53,6 @@
 
 #pragma mark - PanelViewDelegate
 
-- (void)panelViewButtonTapped
-{
-    [_chartView setNeedsDisplay];
-}
-
 - (void)panelViewShrinkSliderValueChangedTo:(CGFloat)newValue
 {
     _chartView.b = newValue;
@@ -68,15 +63,6 @@
 {
     _chartView.a = newValue;
     [_chartView setNeedsDisplay];
-}
-
-- (void)switchTurned:(BOOL)on
-{
-	if (on) {
-		[_panelView turnAnimateOn];
-	} else {
-		[_panelView turnAnimateOff];
-	}
 }
 
 - (void)animate:(double)a b:(double)b

@@ -14,7 +14,6 @@
  */
 @protocol PanelViewProtocol <NSObject>
 
-- (void)switchTurned:(BOOL)on;
 - (void)panelViewShrinkSliderValueChangedTo:(CGFloat)newValue;
 - (void)panelViewAmpSliderValueChangedTo:(CGFloat)newValue;
 - (void)animate:(double)a b:(double)b;
@@ -41,7 +40,6 @@
 @property (nonatomic, weak) UILabel *switchLabel;
 @property (nonatomic, weak) UISwitch *aSwitch;
 
-- (void)stopAnimating;
 - (void)turnAnimateOn;
 - (void)turnAnimateOff;
 
